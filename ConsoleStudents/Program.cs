@@ -96,8 +96,6 @@ namespace ConsoleStudents
 
         public async static void Third()
         {
-
-          
             var data1 = await httpClient.GetFromJsonAsync<IEnumerable<StudentDTO>>($"Student/GetStudentsByGroupnull");
             string result = "";
             foreach (StudentDTO studentDTO in data1)
@@ -113,19 +111,58 @@ namespace ConsoleStudents
         }
         public async static void Fourth()
         {
+            var data1 = await httpClient.GetFromJsonAsync<IEnumerable<GroupDTO>>("Student/GetGroupWithoutStudentsCommand");
+            string result = "";
+            foreach (GroupDTO groupDTO in data1)
+            {
+                result += groupDTO.Title;
+                result += ' ';
+                result += "\n";
+            }
+            Console.WriteLine(result);
 
         }
 
         public async static void Fifth()
         {
-
+            var data1 = await httpClient.GetFromJsonAsync<IEnumerable<GroupStatDTO>>("Student/GetStatistic");
+            string result = "";
+            foreach (GroupStatDTO groupDTO in data1)
+            {
+                result += groupDTO.Title;
+                result += ", индекс специальности: ";
+                result += groupDTO.IdSpecial;
+                result += ", ";
+                result += "Количество студентов: ";
+                result += groupDTO.StudentCount;
+                result += "\n";
+            }
+            Console.WriteLine(result);
         }
         public async static void Six()
         {
-
+            Console.WriteLine("Введите индекс специальности");
+            int.TryParse(Console.ReadLine(), out int index);
+            var data1 = await httpClient.GetFromJsonAsync<IEnumerable<GroupStatDTO>>($"Student/GetStatBySpecId?index={index}");
+            string result = "";
+            foreach (GroupStatDTO groupDTO in data1)
+            {
+                result += groupDTO.Title;
+                result += ", индекс специальности: ";
+                result += groupDTO.IdSpecial;
+                result += ", ";
+                result += "Количество студентов: ";
+                result += groupDTO.StudentCount;
+                result += "\n";
+            }
+            Console.WriteLine(result);
         }
         public async static void Seven()
         {
+            Console.WriteLine("Введите индекс специальности");
+            int.TryParse(Console.ReadLine(), out int index);
+            Console.WriteLine("Введите название группы");
+            string groupName = Console.ReadLine();
 
         }
 

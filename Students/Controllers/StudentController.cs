@@ -69,14 +69,35 @@ namespace Students.Controllers
         [HttpGet("GetGroupWithoutStudentsCommand")]
         public async Task<IEnumerable<GroupDTO>> GroupWithoutStudentsCommand()
         {
-            Db131025Context db = new Db131025Context();
-            var command = new GetGroupWithoutStudentsCommand(db);
-
+            var command = new GetGroupWithoutStudentsCommand();
             var result = await mediator.SendAsync(command);
-
-
             return result;
         }
+
+        [HttpGet("GetStatistic")]
+        public async Task<IEnumerable<GroupStatDTO>> GetStatisticCommand()
+        {
+            var command = new GetStatisticCommand();
+            var result = await mediator.SendAsync(command);
+            return result;
+        }
+
+        [HttpGet("GetStatBySpecId")]
+        public async Task<IEnumerable<GroupStatDTO>> GetStatBySpecIdCommand(int index)
+        {
+            var command = new GetStatBySpecIdCommand { Index = index};
+            var result = await mediator.SendAsync(command);
+            return result;
+        }
+
+        [HttpGet("AddNewGroupForSpec")]
+        public async Task<IEnumerable<GroupStatDTO>> AddNewGroupForSpec(int index, string groupName)
+        {
+            var command = new AddNewGroupForSpecCommand { Index = index , GroupTitle = groupName};
+            var result = await mediator.SendAsync(command);
+            return result;
+        }
+
 
 
     }

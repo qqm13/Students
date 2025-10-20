@@ -17,9 +17,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Reference Include="MyMediator">
-			<HintPath>..\..\MyMediator\MyMediator\bin\Debug\net9.0\MyMediator.dll</HintPath>
-		</Reference>
+	  <Reference Include="MyMediator">
+	    <HintPath>..\..\MyMediator\MyMediator\bin\Debug\net9.0\MyMediator.dll</HintPath>
+	  </Reference>
 	</ItemGroup>
 
 </Project>
