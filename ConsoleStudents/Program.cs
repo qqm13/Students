@@ -163,7 +163,7 @@ namespace ConsoleStudents
             int.TryParse(Console.ReadLine(), out int index);
             Console.WriteLine("Введите название группы");
             string groupName = Console.ReadLine();
-
+            var data1 = await httpClient.PostAsync($"Student/AddNewGroupForSpec?index={index}&groupName={groupName}", null);
         }
 
         public async static void Eight()

@@ -90,12 +90,12 @@ namespace Students.Controllers
             return result;
         }
 
-        [HttpGet("AddNewGroupForSpec")]
-        public async Task<IEnumerable<GroupStatDTO>> AddNewGroupForSpec(int index, string groupName)
+        [HttpPost("AddNewGroupForSpec")]
+        public async Task<ActionResult> AddNewGroupForSpec(int index, string groupName)
         {
-            var command = new AddNewGroupForSpecCommand { Index = index , GroupTitle = groupName};
-            var result = await mediator.SendAsync(command);
-            return result;
+            var command = new AddNewGroupForSpecCommand { IndexSpec = index , GroupTitle = groupName};
+            await mediator.SendAsync(command);
+            return Ok();
         }
 
 
